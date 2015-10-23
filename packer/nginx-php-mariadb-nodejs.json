@@ -2,7 +2,7 @@
   "variables": {
     "PACKER_OS_FLAVOUR": "ubuntu",
     "UBUNTU_RELEASE_NAME": "ubuntu-14.04.3-server-amd64",
-    "BOX_NAME": "nginx-php-mariadb-nvm"
+    "BOX_NAME": "nginx-php-mariadb-nodejs"
   },
   "builders": [
     {
@@ -90,7 +90,7 @@
     },
     {
       "type": "ansible-local",
-      "playbook_file": "ansible/nginx-php-mariadb-nvm.yml",
+      "playbook_file": "ansible/nginx-php-mariadb-nodejs.yml",
       "playbook_dir":  "ansible",
       "extra_arguments": ["-v"]
     },

@@ -1,7 +1,7 @@
 - hosts: all
   sudo: true
   vars:
-    hostname: nginx-php-mariadb-nvm
+    hostname: nginx-php-mariadb-nodejs
   vars_files:
     - vars/nginx.yml
     - vars/php.yml
