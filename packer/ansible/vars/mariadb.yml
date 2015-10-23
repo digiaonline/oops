@@ -1,0 +1,5 @@
+#mysql_users:
+#  - name: vagrant
+#    host: "%"
+#    password: vagrant
+#    priv: "*.*:ALL"

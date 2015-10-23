@@ -1,0 +1,5 @@
+server_name: nginx-php-mariadb-nvm
+nginx:
+  web_root: /var/www
+  host_file: /etc/nginx/sites-available/default
+  host_template: default.j2

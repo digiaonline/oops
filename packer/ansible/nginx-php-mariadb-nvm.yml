@@ -1,0 +1,14 @@
+- hosts: all
+  sudo: true
+  vars:
+    hostname: nginx-php-mariadb-nvm
+  vars_files:
+    - vars/nginx.yml
+    - vars/php.yml
+    - vars/mariadb.yml
+  roles:
+    - init
+    - nginx
+    - php5
+    - mariadb
+    - nodejs

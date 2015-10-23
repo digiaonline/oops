@@ -1,0 +1,23 @@
+- name: Add apt repository
+  sudo: yes
+  shell: curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
+
+- name: Install nodejs
+  sudo: yes
+  apt: pkg=nodejs state=latest
+
+- name: Install global npm packages
+  sudo: yes
+  shell: "npm install -g {{item}}"
+  with_items:
+    - bower
+    - gulp
+    - grunt-cli
+    - grunt
+    - forever
+    - supervisor
+    - pm2
+    - coffee-script
+    - less
+    - yo
+    - browserify

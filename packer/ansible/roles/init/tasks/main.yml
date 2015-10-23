@@ -1,0 +1,41 @@
+- name: Update apt
+  apt: update_cache=yes
+
+- name: Install Additional Packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - htop
+    - screen
+    - tmux
+    - git
+    - vim
+    - curl
+    - git-core
+    - python-software-properties
+    - wget
+    - zsh
+
+- name: Set the hostname in /etc/hostname
+  shell: echo {{ hostname }} > /etc/hostname
+  when: hostname is defined
+
+- name: Set the hostname
+  shell: hostname {{ hostname }}
+  when: hostname is defined
+
+- name: Update /etc/hosts
+  lineinfile: dest=/etc/hosts regexp='^127\.0\.0\.1' line='127.0.0.1 localhost {{ hostname }}' owner=root group=root mode=0644
+
+#- name: Creating deployment user
+#  user: name={{ deploy_user }} append=yes groups=sudo shell=/bin/bash
+#  sudo: yes
+
+#- name: Configure password-less sudo for deployment user
+#  lineinfile: "dest=/etc/sudoers.d/10-nopasswd owner=root group=root mode=0440
+#              line='{{ deploy_user }} ALL=(ALL) NOPASSWD: ALL'
+#              state=present
+#              create=yes
+#              validate='visudo -cf %s'"
+
+#- name: Insert authorized_keys from Github
+#  authorized_key: user={{ deploy_user }} key=https://github.com/Jalle19.keys
