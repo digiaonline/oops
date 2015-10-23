@@ -5,7 +5,7 @@
 This repository holds everything related to infrastructure/operations for all our projects. In a nutshell, we use 
 Packer to build Vagrant boxes from a standard Ubuntu Server (or any other image if necessary) image. Packer then uses 
 local Ansible provisioning to provision the software required in the box. The built boxes can then be uploaded to 
-Atlas which makes them available to Vagrant. See (#the-provisioning-process) for more details.
+Atlas which makes them available to Vagrant. See ["The provisioning process"](#the-provisioning-process) for more details.
 
 ## Guidelines
 
@@ -34,7 +34,7 @@ adding your own various provisioning hacks, use the following instructions.
 
 * Create a new branch in this repository with the same name as your project's repository
 * Add this repository as a submodule in your own project's repository and make it point to the branch you just created
-* Change whatever you need to get your box into shape, then follow the steps under (#usage) to build the box and push 
+* Change whatever you need to get your box into shape, then follow the steps under ["Usage"](#usage) to build the box and push 
  it to Atlas.
  
 ### Notes about Atlas
