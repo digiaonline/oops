@@ -1,0 +1,10 @@
+#
+# The name of the user to create on the server
+#
+deploy_user: user
+
+#
+# The path to the public key file to add to the user's authorized_keys file.
+# The path is relative to the playbook file.
+#
+deploy_user_public_key: keys/user.pub

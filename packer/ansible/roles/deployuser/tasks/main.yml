@@ -1,0 +1,13 @@
+- name: Creating deployment user
+  user: name="{{ deploy_user }}" append=yes groups=sudo shell=/bin/bash
+  sudo: yes
+
+- name: Configure password-less sudo for deployment user
+  lineinfile: "dest=/etc/sudoers.d/10-nopasswd owner=root group=root mode=0440
+              line='{{ deploy_user }} ALL=(ALL) NOPASSWD: ALL'
+              state=present
+              create=yes
+              validate='visudo -cf %s'"
+
+- name: Insert authorized_keys
+  authorized_key: user={{ deploy_user }} key="{{ lookup('file', deploy_user_public_key) }}" state=present
