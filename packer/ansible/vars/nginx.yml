@@ -1,4 +1,4 @@
-server_name: nginx-php-mariadb-nodejs
+server_name: "{{ hostname }}"
 nginx:
   web_root: /var/www
   host_file: /etc/nginx/sites-available/default
