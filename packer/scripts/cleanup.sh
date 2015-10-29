@@ -29,6 +29,9 @@ rm -rf /usr/share/doc
 # Remove files from cache
 find /var/cache -type f -delete -print
 
+# Remove apt-get lists, Atlas builders may use transparent proxies which mess up the hash checksums
+rm -rf /var/lib/apt/lists/*
+
 # Remove guest addition source
 rm -rf /usr/src/virtualbox-ose-guest*
 rm -rf /usr/src/vboxguest*
