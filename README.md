@@ -20,12 +20,14 @@ Vagrant.
 ## Usage
 
 These instructions are only for simply building the base box from the master branch. If you're on a project-specific 
-branch you should probably follow that README.md instead.
+branch you should probably follow that branch's README.md instead.
 
-* Enter the `packer/` directory
-* Run `packer validate nginx-php-mariadb-nvm.yml` to verify that the configuration is valid
-* Run `packer build nginx-php-mariadb-nvm.yml` to build the Vagrant box locally and push it to 
-Atlas, or run `packer push nginx-php-mariadb-nvm.yml` to build the box in Atlas instead.
+* Enter the `packer/` directory. The paths in the Packer template are relative to the directory `packer` is run from 
+so this step is important.
+* Run `packer validate nginx-php-mariadb-nodejs.yml` to verify that the configuration is valid
+* Run `packer build nginx-php-mariadb-nodejs.yml` to build the Vagrant box locally and push it to 
+Atlas, or run `packer push nginx-php-mariadb-nodejs.yml` to build the box in Atlas instead. The latter is the 
+preferred way of doing it.
 
 ## Linking to a project repository
 
@@ -43,6 +45,9 @@ Boxes pushed to Atlas are private by default, meaning strangers on the Internet 
 box named `nordsoftware/secret-project`. To use private boxes in Vagrant you will have to either a) create an Atlas 
 token and add it as an environment variable or b) create an Atlas account and run `vagrant login` before you run 
 `vagrant up` for the first time.
+
+If you want to create a new base box which is supposed to be public, log in to Atlas, find the Vagrant box, select 
+Settings and untick the "Private" checkbox.
 
 ## The provisioning process
 
