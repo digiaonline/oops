@@ -16,6 +16,10 @@ Vagrant.
 ## Requirements
 
 * Make sure you have [Packer](https://packer.io/) installed
+* Make an account on Atlas if you haven't done so already, then ask someone to add you to the `nordsoftware` 
+organization. Once you've done that, create an Atlas token by clicking your nickname in the menu bar, then Tokens. Add 
+this token as an environment variable named `ATLAS_TOKEN`. Consult the Internet on how to do this for your operating 
+system.
 
 ## Usage
 
