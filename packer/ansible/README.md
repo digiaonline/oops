@@ -10,3 +10,7 @@
 forks and copies, then when you've found something you think you can use, add it to your roles directory by running  
 `ansible-galaxy install foo:bar -p roles/` from this directory. It is important that you use the `-p` switch, otherwise 
 the role will be installed locally in `/etc/ansible` which is definitely not what you want.
+
+## Various default values
+
+* The MySQL root password is `root`
