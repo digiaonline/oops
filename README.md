@@ -24,9 +24,9 @@ branch you should probably follow that branch's README.md instead.
 
 * Enter the `packer/` directory. The paths in the Packer template are relative to the directory `packer` is run from 
 so this step is important.
-* Run `packer validate nginx-php-mariadb-nodejs.yml` to verify that the configuration is valid
-* Run `packer build nginx-php-mariadb-nodejs.yml` to build the Vagrant box locally and push it to 
-Atlas, or run `packer push nginx-php-mariadb-nodejs.yml` to build the box in Atlas instead. The latter is the 
+* Run `packer validate nginx-php-mariadb-nodejs.json` to verify that the configuration is valid
+* Run `packer build nginx-php-mariadb-nodejs.json` to build the Vagrant box locally and push it to 
+Atlas, or run `packer push nginx-php-mariadb-nodejs.json` to build the box in Atlas instead. The latter is the 
 preferred way of doing it.
 
 ## Linking to a project repository
