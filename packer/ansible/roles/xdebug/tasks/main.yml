@@ -1,0 +1,10 @@
+- name: Install packages
+  apt: pkg=php5-xdebug state=latest
+
+- name: Configure xdebug
+  template:
+    src: xdebug.ini.j2
+    dest: "{{ php_extension_path }}/xdebug.ini"
+    owner: root
+    group: root
+    mode: 0644

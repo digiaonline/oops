@@ -16,12 +16,3 @@
 
 - name: Install Composer
   shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
-
-- name: Copy xdebug INI into php.d folder.
-  template:
-    src: xdebug.ini.j2
-    dest: "{{ php.extension_conf_path }}/xdebug.ini"
-    owner: root
-    group: root
-    mode: 0644
-  # notify: restart webserver
