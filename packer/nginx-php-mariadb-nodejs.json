@@ -92,7 +92,8 @@
       "type": "ansible-local",
       "playbook_file": "ansible/nginx-php-mariadb-nodejs.yml",
       "playbook_dir":  "ansible",
-      "extra_arguments": ["-v"]
+      "inventory_file": "ansible/inventory/development",
+      "extra_arguments": ["-i", "inventory/development", "--limit", "vagrant", "-v"]
     },
     {
       "type": "shell",
