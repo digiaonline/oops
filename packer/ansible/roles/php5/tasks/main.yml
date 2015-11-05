@@ -2,15 +2,14 @@
   sudo: yes
   apt_repository: repo=ppa:ondrej/{{ php.ppa }}
 
-- name: Install php5-cli
+- name: Install packages
   sudo: yes
-  apt: pkg=php5-cli state=latest
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - php5-cli
+    - php5-fpm
 
-- name: Install php5-fpm
-  sudo: yes
-  apt: pkg=php5-fpm state=latest
-
-- name: Install Packages
+- name: Install extensions
   sudo: yes
   apt: pkg={{ item }} state=latest
   with_items: php.packages
