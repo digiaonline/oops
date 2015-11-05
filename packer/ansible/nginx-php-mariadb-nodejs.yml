@@ -13,7 +13,6 @@
     - nginx
     - php5
     - mariadb
-    - nodejs
 
 # Vagrant-specific playbook
 - hosts: vagrant
@@ -23,3 +22,4 @@
     - vars/xdebug.yml
   roles:
     - xdebug
+    - nodejs
