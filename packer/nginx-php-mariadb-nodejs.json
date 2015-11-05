@@ -69,7 +69,6 @@
       "scripts": [
         "scripts/update.sh",
         "scripts/sshd.sh",
-        "scripts/networking.sh",
         "scripts/ansible.sh"
       ],
       "override": {
@@ -83,6 +82,7 @@
       "only": ["virtualbox-iso"],
       "execute_command": "echo 'vagrant'|{{.Vars}} sudo -S -E bash '{{.Path}}'",
       "scripts": [
+        "scripts/networking.sh",
         "scripts/sudoers.sh",
         "scripts/vagrant.sh",
         "scripts/vmtools.sh"
