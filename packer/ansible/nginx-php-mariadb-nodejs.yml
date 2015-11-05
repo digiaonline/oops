@@ -1,4 +1,6 @@
+# Main playbook that applies to all hosts
 - hosts: all
+  connection: local
   sudo: true
   vars:
     hostname: nginx-php-mariadb-nodejs
@@ -12,3 +14,12 @@
     - php5
     - mariadb
     - nodejs
+
+# Vagrant-specific playbook
+- hosts: vagrant
+  connection: local
+  sudo: true
+  vars_files:
+    - vars/xdebug.yml
+  roles:
+    - xdebug
