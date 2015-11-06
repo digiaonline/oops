@@ -6,10 +6,11 @@
 
 ## Guidelines
 
-* Try not to roll your own Ansible roles. Instead, go to Ansible Galaxy, use your own judgement to filter out all the 
-forks and copies, then when you've found something you think you can use, add it to your roles directory by running  
-`ansible-galaxy install foo:bar -p roles/` from this directory. It is important that you use the `-p` switch, otherwise 
-the role will be installed locally in `/etc/ansible` which is definitely not what you want.
+*  Try to refrain from using roles from Ansible Galaxy. Even though you may find what you're looking for there, the 
+roles are often overly complicated, sometimes they don't work, sometimes they're outdated, sometimes they rely on PPAs 
+that don't exist anymore, or they just otherwise sucks. Often times you just want to install a package and maybe supply 
+a template for a configuration file and the time spent figuring out how to configure an existing role for that can just 
+as well be spent writing a proper role from scratch.
 
 ## Various default values
 
