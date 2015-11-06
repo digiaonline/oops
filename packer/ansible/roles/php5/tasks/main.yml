@@ -14,5 +14,10 @@
   apt: pkg={{ item }} state=latest
   with_items: php.packages
 
+- name: Configure php5-fpm to use TCP/IP rather than a socket
+  sudo: yes
+  template: src={{ php_fpm_pool_www_template }} dest={{ php_fpm_pool_www_file }}
+  notify: restart php5-fpm
+
 - name: Install Composer
   shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer

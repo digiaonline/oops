@@ -1,9 +1,0 @@
-server_name: "{{ hostname }}"
-nginx:
-  web_root: /var/www
-  web_user: www-data
-  web_group: www-data
-  host_file: /etc/nginx/sites-available/default
-  host_template: default.j2
-  fpm_pool_www_file: /etc/php5/fpm/pool.d/www.conf
-  fpm_pool_www_template: fpm_pool_www.j2

@@ -1,8 +1,8 @@
 server {
     listen 80;
-    server_name {{ server_name }};
+    server_name {{ nginx_server_name }};
 
-    root {{ nginx.web_root }};
+    root {{ nginx_web_root }};
     index index.php index.html;
 
     location / {
@@ -15,13 +15,5 @@ server {
     error_page 500 502 503 504 /50x.html;
         location = /50x.html {
         root /usr/share/nginx/html;
-    }
-
-    location ~ \.php$ {
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass localhost:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        include fastcgi_params;
     }
 }

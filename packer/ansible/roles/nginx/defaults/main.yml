@@ -1,0 +1,15 @@
+nginx_server_name: "{{ hostname }}"
+nginx_web_root: /var/www
+nginx_web_user: www-data
+nginx_web_group: www-data
+nginx_host_file: /etc/nginx/sites-available/default
+
+#
+# This role comes with two basic templates, one without PHP support and one with
+#
+nginx_host_template: default.j2
+
+#
+# Only applicable when PHP is used
+#
+nginx_fastcgi_pass: localhost:9000

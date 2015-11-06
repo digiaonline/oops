@@ -4,10 +4,7 @@
   sudo: true
   vars:
     hostname: nginx-php-mariadb-nodejs
-  vars_files:
-    - vars/nginx.yml
-    - vars/php.yml
-    - vars/mariadb.yml
+    nginx_host_template: default-php.j2
   roles:
     - init
     - nginx
@@ -18,8 +15,6 @@
 - hosts: vagrant
   connection: local
   sudo: true
-  vars_files:
-    - vars/xdebug.yml
   roles:
     - xdebug
     - nodejs

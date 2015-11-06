@@ -1,7 +1,3 @@
 - name: restart nginx
   service: name=nginx state=restarted
   sudo: true
-
-- name: restart php5-fpm
-  service: name=php5-fpm state=restarted
-  sudo: true

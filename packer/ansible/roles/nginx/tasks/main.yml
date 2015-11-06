@@ -3,20 +3,15 @@
   apt: pkg=nginx state=latest update_cache=yes
 
 - name: Ensure web root directory exists
-  file: path={{ nginx.web_root }} state=directory
+  file: path={{ nginx_web_root }} state=directory
 
 - name: Ensure web root directory has proper permissions
-  file: path={{ nginx.web_root }}
-        owner={{ nginx.web_user }}
-        group={{ nginx.web_group }}
+  file: path={{ nginx_web_root }}
+        owner={{ nginx_web_user }}
+        group={{ nginx_web_group }}
         mode="u=rwX,g=rwXs,o=rX"
 
 - name: Change default nginx site
   sudo: yes
-  template: src={{ nginx.host_template }} dest={{ nginx.host_file }}
+  template: src={{ nginx_host_template }} dest={{ nginx_host_file }}
   notify: restart nginx
-
-- name: Configure php5-fpm to use TCP/IP rather than a socket
-  sudo: yes
-  template: src={{ nginx.fpm_pool_www_template }} dest={{ nginx.fpm_pool_www_file }}
-  notify: restart php5-fpm
