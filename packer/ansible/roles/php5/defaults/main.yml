@@ -1,12 +1,10 @@
-php:
-  ppa: php5-5.6
-  packages:
-    - php5-curl
-    - php5-gd
-    - php5-intl
-    - php5-mcrypt
-    - php5-mysql
-    - phpunit
-
+php_ppa: php5-5.6
+php_packages:
+  - php5-curl
+  - php5-gd
+  - php5-intl
+  - php5-mcrypt
+  - php5-mysql
+  - phpunit
 php_fpm_pool_www_file: /etc/php5/fpm/pool.d/www.conf
 php_fpm_pool_www_template: fpm_pool_www.j2
