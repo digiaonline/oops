@@ -2,6 +2,15 @@
   sudo: yes
   apt: pkg=nginx state=latest update_cache=yes
 
+- name: Ensure web root directory exists
+  file: path={{ nginx.web_root }} state=directory
+
+- name: Ensure web root directory has proper permissions
+  file: path={{ nginx.web_root }}
+        owner={{ nginx.web_user }}
+        group={{ nginx.web_group }}
+        mode="u=rwX,g=rwXs,o=rX"
+
 - name: Change default nginx site
   sudo: yes
   template: src={{ nginx.host_template }} dest={{ nginx.host_file }}

@@ -1,5 +1,7 @@
 server_name: "{{ hostname }}"
 nginx:
   web_root: /var/www
+  web_user: www-data
+  web_group: www-data
   host_file: /etc/nginx/sites-available/default
   host_template: default.j2
