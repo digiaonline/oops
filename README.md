@@ -82,5 +82,5 @@ provisioners to do the bare minimum required to get Ansible installed and workin
 installing the VirtualBox guest additions, configuring sudo and so on.
  
 The real provisioning is done by Ansible, and unless you have a very good reason not to you should adapt your Ansible 
-playbook(s) instead of provisioning directly from Packer. See [ansible/README.md](ansible/README.md) for further 
+playbook(s) instead of provisioning directly from Packer. See [ansible/README.md](packer/ansible/README.md) for further 
 details.
