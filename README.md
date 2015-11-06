@@ -15,13 +15,21 @@ Vagrant.
 
 ## Requirements
 
+### Packer
+
 * Make sure you have [Packer](https://packer.io/) installed
 * Make an account on Atlas if you haven't done so already, then ask someone to add you to the `nordsoftware` 
 organization. Once you've done that, create an Atlas token by clicking your nickname in the menu bar, then Tokens. Add 
 this token as an environment variable named `ATLAS_TOKEN`. Consult the Internet on how to do this for your operating 
 system.
 
+### Terraform
+
+* Make sure you have [Terraform](https://terraform.io/) installed
+
 ## Usage
+
+### Packer
 
 These instructions are only for simply building the base box from the master branch. If you're on a project-specific 
 branch you should probably follow that branch's README.md instead.
@@ -32,6 +40,20 @@ so this step is important.
 * Run `packer build nginx-php-mariadb-nodejs.json` to build the Vagrant box locally and push it to 
 Atlas, or run `packer push nginx-php-mariadb-nodejs.json` to build the box in Atlas instead. The latter is the 
 preferred way of doing it.
+
+If your Packer template is configured to push any production artifacts to Atlas (such as Amazon AMIs) you can browse to 
+the artifact to get a code snippet for use by Terraform (see the next chapter).
+
+### Terraform
+
+* When you've created a new project and you have an initial `.tf` file for project's infrastructure you should 
+configure remote state. This means the current infrastructure state is pushed to Atlas, after which you can use 
+`terraform push` to update the state.
+* Configure the project to use remote state by running `terraform remote config -backend-config="name=nordsoftware/project-name"`. 
+You will be asked to enter any undefined variable values (such as secret API keys). These will then be pushed to Atlas 
+as well so other team members won't have to bother knowing them generally.
+* Once remote state has been configured, run `terraform push` to trigger a new "change". Now you can head over to Atlas 
+and confirm the new changes.
 
 ## Linking to a project repository
 
