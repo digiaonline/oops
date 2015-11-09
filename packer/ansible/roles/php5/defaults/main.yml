@@ -8,3 +8,10 @@ php_packages:
   - phpunit
 php_fpm_pool_www_file: /etc/php5/fpm/pool.d/www.conf
 php_fpm_pool_www_template: fpm_pool_www.j2
+
+php_fpm_ini_file: /etc/php5/fpm/php.ini
+php_fpm_ini_template: php.ini.j2
+
+# make sure you use matching values for nginx too
+php_upload_max_filesize: 10M
+php_post_max_size: 10M

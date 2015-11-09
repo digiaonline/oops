@@ -19,5 +19,10 @@
   template: src={{ php_fpm_pool_www_template }} dest={{ php_fpm_pool_www_file }}
   notify: restart php5-fpm
 
+- name: Configure php.ini using template
+  sudo: yes
+  template: src={{ php_fpm_ini_template }} dest={{ php_fpm_ini_file }}
+  notify: restart php5-fpm
+
 - name: Install Composer
   shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
