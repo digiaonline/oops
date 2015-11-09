@@ -5,6 +5,8 @@ server {
 	root {{ nginx_web_root }};
 	index index.php index.html;
 
+	client_max_body_size {{ nginx_client_max_body_size }};
+
 	location / {
 		try_files $uri $uri/ /index.php?$query_string;
 		sendfile off;
