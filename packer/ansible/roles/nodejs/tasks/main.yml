@@ -8,7 +8,7 @@
 
 - name: Install global npm packages
   sudo: yes
-  shell: "npm install -g {{item}}"
+  shell: "which {{item}} || npm install -g {{item}}"
   with_items:
     - bower
     - gulp
