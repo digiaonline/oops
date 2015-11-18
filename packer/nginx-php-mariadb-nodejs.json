@@ -2,6 +2,7 @@
   "variables": {
     "PACKER_OS_FLAVOUR": "ubuntu",
     "UBUNTU_RELEASE_NAME": "ubuntu-14.04.3-server-amd64",
+    "ATLAS_ORGANIZATION": "nordsoftware",
     "BOX_NAME": "nginx-php-mariadb-nodejs"
   },
   "builders": [
@@ -114,7 +115,7 @@
       {
         "type": "atlas",
         "only": ["virtualbox-iso"],
-        "artifact": "nordsoftware/{{ user `BOX_NAME` }}",
+        "artifact": "{{ user `ATLAS_ORGANIZATION` }}/{{ user `BOX_NAME` }}",
         "artifact_type": "vagrant.box",
         "metadata": {
           "provider": "virtualbox",
@@ -124,6 +125,6 @@
     ]
   ],
   "push": {
-    "name": "nordsoftware/{{ user `BOX_NAME` }}"
+    "name": "{{ user `ATLAS_ORGANIZATION` }}/{{ user `BOX_NAME` }}"
   }
 }
