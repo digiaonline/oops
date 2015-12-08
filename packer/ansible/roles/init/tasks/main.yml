@@ -1,5 +1,5 @@
 - name: Install common packages
-  apt: pkg={{ item }} state=latest update_cache=true
+  apt: pkg={{ item }} state=latest update_cache=yes
   with_items:
     - htop
     - screen

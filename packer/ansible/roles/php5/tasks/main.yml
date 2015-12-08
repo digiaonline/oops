@@ -4,7 +4,7 @@
 
 - name: Install packages
   sudo: yes
-  apt: pkg={{ item }} state=latest update_cache=true
+  apt: pkg={{ item }} state=latest update_cache=yes
   with_items: php_packages
 
 - name: Configure php5-fpm to use TCP/IP rather than a socket

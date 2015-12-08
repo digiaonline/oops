@@ -1,5 +1,5 @@
 - name: Install packages
-  apt: pkg=php5-xdebug state=latest update_cache=true
+  apt: pkg=php5-xdebug state=latest update_cache=yes
 
 - name: Configure xdebug
   template:
