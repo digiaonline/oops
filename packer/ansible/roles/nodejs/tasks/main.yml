@@ -2,7 +2,7 @@
   sudo: yes
   shell: curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
 
-- name: Install nodejs
+- name: Install packages
   sudo: yes
   apt: pkg=nodejs state=latest update_cache=true
 

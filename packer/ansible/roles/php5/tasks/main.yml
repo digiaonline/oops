@@ -1,4 +1,4 @@
-- name: Add ppa Repository
+- name: Add apt repository
   sudo: yes
   apt_repository: repo=ppa:ondrej/{{ php_ppa }}
 

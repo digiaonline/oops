@@ -1,4 +1,4 @@
-- name: Install Nginx
+- name: Install packages
   sudo: yes
   apt: pkg=nginx state=latest update_cache=yes
 
