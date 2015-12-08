@@ -4,7 +4,7 @@
 
 - name: Install nodejs
   sudo: yes
-  apt: pkg=nodejs state=latest
+  apt: pkg=nodejs state=latest update_cache=true
 
 - name: Install global npm packages
   sudo: yes

@@ -1,8 +1,5 @@
-- name: Update apt
-  apt: update_cache=yes
-
-- name: Install Additional Packages
-  apt: pkg={{ item }} state=latest
+- name: Install common packages
+  apt: pkg={{ item }} state=latest update_cache=true
   with_items:
     - htop
     - screen

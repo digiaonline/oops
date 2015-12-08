@@ -2,4 +2,3 @@
   apt: pkg={{ openjdk_jre_package }}
        state=latest
        update_cache=true
-       cache_valid_time=3600
