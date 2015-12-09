@@ -1,0 +1,20 @@
+#
+# The template file to use for redis.conf
+#
+redis_template: redis.j2
+
+#
+# The location of the redis.conf file
+#
+redis_conf_file: /etc/redis/redis.conf
+
+#
+# Set to 0.0.0.0 to listen on all interfaces
+#
+redis_bind: 127.0.0.1
+
+#
+# Set this value to configure the Redis instance to be a slave,
+# e.g. --slaveof 127.0.0.1 6379
+#
+redis_slaveof_line: ""

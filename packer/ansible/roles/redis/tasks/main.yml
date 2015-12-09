@@ -1,0 +1,9 @@
+- name: Add apt repository
+  apt_repository: repo=ppa:chris-lea/redis-server
+
+- name: Install packages
+  apt: pkg=redis-server state=latest update_cache=yes
+
+- name: Configure using template
+  template: src={{ redis_template }} dest={{ redis_conf_file }}
+  notify: restart redis
