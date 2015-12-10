@@ -10,3 +10,4 @@
   apt: pkg=elasticsearch
        state=latest
        update_cache=yes
+  notify: restart elasticsearch
