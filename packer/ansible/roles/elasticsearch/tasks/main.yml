@@ -1,12 +1,12 @@
-- name: Install Elasticsearch PPA key
+- name: Add apt key
   apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch
            state=present
 
-- name: Add Elasticsearch PPA
+- name: Add apt repository
   template: dest="/etc/apt/sources.list.d/elasticsearch.list"
             src="elasticsearch.list.j2"
 
-- name: Install Elasticsearch
+- name: Install packages
   apt: pkg=elasticsearch
        state=latest
        update_cache=yes
