@@ -10,4 +10,6 @@
   apt: pkg=elasticsearch
        state=latest
        update_cache=yes
-  notify: restart elasticsearch
+
+- name: Ensure service is running
+  service: name=elasticsearch state=started
