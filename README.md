@@ -31,7 +31,7 @@ system.
 
 ### Packer
 
-These instructions are only for simply building the base box from the master branch. If you're on a project-specific 
+These instructions are only for simply building a base box from the master branch. If you're on a project-specific 
 branch you should probably follow that branch's README.md instead.
 
 * Enter the `packer/` directory. The paths in the Packer template are relative to the directory `packer` is run from 
@@ -43,6 +43,12 @@ preferred way of doing it.
 
 If your Packer template is configured to push any production artifacts to Atlas (such as Amazon AMIs) you can browse to 
 the artifact to get a code snippet for use by Terraform (see the next chapter).
+
+The master branch ships with a few base boxes that can be used as baselines when creating project-specific boxes:
+
+* `nginx-php-mariadb-nodejs` a basic stack
+* `nginx-php` not very useful
+* `ubuntu-1510-nginx-php-mariadb-nodejs` same as the first box, but based on Ubuntu 15.10 insteaf of 14.04.
 
 ### Terraform
 
