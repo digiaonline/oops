@@ -63,15 +63,31 @@ as well so other team members won't have to bother knowing them generally.
 * Once remote state has been configured, run `terraform push` to trigger a new "change". Now you can head over to Atlas 
 and confirm the new changes.
 
-## Linking to a project repository
+### Customized environment for a project
 
 In many cases the base box available in the master branch won't be sufficient for a particular project. Instead of 
-adding your own various provisioning hacks, use the following instructions.
+adding your own various provisioning hacks, use the following instructions to generate a suitable box.
 
 * Create a new branch in this repository with the same name as your project's repository
-* Add this repository as a submodule in your own project's repository and make it point to the branch you just created
+* Rename the base box you want to use as a starting point to something that corresponds with your project. Also 
+rename the Ansible playbook file. This is not strictly a requirement but it helps keep ambiguity in check.
 * Change whatever you need to get your box into shape, then follow the steps under ["Usage"](#usage) to build the box and push 
  it to Atlas.
+* Add this repository as a submodule in your own project's repository and make it point to the branch you just created. 
+In general the module is named `ops`.
+ 
+### Adapting an environment to new requirements
+
+Sooner or later after an environment is created the requirements change slightly so you need to adapt the environment. 
+If that's the case, simply change whatever you have to in the provisioning process, then push a new build to Atlas 
+using `packer push`.
+
+Once the necessary changes have been made there are two ways to bring existing environments up to speed:
+
+* Run `vagrant box update`, then `vagrant destroy` and then `vagrant up`
+* Update your project's `ops` submodule and run `vagrant provision`. This assumes you've configured your Vagrantfile to 
+run the same provisioning as Packer does during the build process. This approach is faster and doesn't require you to 
+destroy your existing environment.
  
 ### Notes about Atlas
 
