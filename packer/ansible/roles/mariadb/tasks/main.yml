@@ -14,6 +14,11 @@
 #
 # Configuration
 #
+- name: Configure my.cnf using template
+  template: dest="/etc/mysql/my.cnf"
+            src="my.cnf.j2"
+  notify: restart mariadb
+
 - name: Get list of hosts for the root user
   command: mysql -u root -NBe 'SELECT Host FROM mysql.user WHERE User = "root" ORDER BY (Host="localhost") ASC'
   register: mariadb_root_hosts

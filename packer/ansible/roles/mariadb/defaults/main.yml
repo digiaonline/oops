@@ -1,3 +1,4 @@
+mariadb_bind_address: 127.0.0.1
 mariadb_user_home: /root
 mariadb_root_username: root
 mariadb_root_password: root
