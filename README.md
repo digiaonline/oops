@@ -50,7 +50,7 @@ The master branch ships with a few base boxes that can be used as baselines when
 
 * `nginx-php-mariadb-nodejs` a basic stack
 * `nginx-php` not very useful
-* `ubuntu-1510-nginx-php-mariadb-nodejs` same as the first box, but based on Ubuntu 15.10 insteaf of 14.04.
+* `ubuntu-1510-nginx-php-mariadb-nodejs` same as the first box, but based on Ubuntu 15.10 instead of 14.04.
 
 ### Terraform
 
