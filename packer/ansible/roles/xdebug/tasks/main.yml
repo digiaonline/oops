@@ -1,3 +1,6 @@
+- name: Add apt repository
+  apt_repository: repo=ppa:ondrej/{{ php_ppa }}
+
 - name: Install packages
   apt: pkg=php5-xdebug state=latest update_cache=yes
 

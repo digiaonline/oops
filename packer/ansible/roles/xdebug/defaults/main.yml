@@ -1,1 +1,2 @@
+php_ppa: php5-5.6
 php_extension_path: "/etc/php5/mods-available/"
