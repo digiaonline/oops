@@ -11,5 +11,5 @@
        state=latest
        update_cache=yes
 
-- name: Ensure service is running
-  service: name=elasticsearch state=started
+- name: Ensure service is enabled and running
+  service: name=elasticsearch state=started enabled=true
