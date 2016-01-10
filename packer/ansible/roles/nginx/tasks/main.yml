@@ -1,6 +1,6 @@
 - name: Install packages
   sudo: yes
-  apt: pkg=nginx state=latest update_cache=yes
+  apt: pkg=nginx state=latest update_cache=yes cache_valid_time=3600
 
 - name: Ensure web root directory exists
   file: path={{ nginx_web_root }} state=directory
