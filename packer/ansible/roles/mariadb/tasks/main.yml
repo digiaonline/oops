@@ -55,9 +55,9 @@
     mode: 0600
 
 - name: Create databases
-  mysql_db: name={{ item.database }} state=present login_user=root login_password={{ mariadb_root_password }}
+  mysql_db: name={{ item }} state=present login_user=root login_password={{ mariadb_root_password }}
   with_items: mariadb_databases | default([])
 
 - name: Create users
   mysql_user: name={{ item.user }} password={{ item.password }} host={{ item.host }} priv={{ item.database }}.*:ALL state=present login_user=root login_password={{ mariadb_root_password }}
-  with_items: mariadb_databases | default([])
+  with_items: mariadb_users | default([])
