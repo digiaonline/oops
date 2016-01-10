@@ -31,6 +31,13 @@ If you need to provide a custom template, put it in `ansible/templates` and refe
 
 The MySQL root password is `root`
 
+### firewall
+
+By default, the firewall role will allow complete access from internal networks and access from anywhere to port 22. If 
+you need to expose more ports than this, override `ufw_allowed_incoming_ports`. If you don't want to keep any ports 
+open to the world (useful for servers that only need to be internally accessible), override `ufw_allowed_incoming_ports`
+to the value `[]`.
+
 ### Adding new roles
 
 Try to refrain from using roles from Ansible Galaxy. Even though you may find what you're looking for there, the 
