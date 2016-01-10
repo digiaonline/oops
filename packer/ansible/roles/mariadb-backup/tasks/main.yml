@@ -1,0 +1,25 @@
+- name: "Ensure backup target directory exists"
+  file: path={{ mariadb_backup_path }} state=directory
+
+- name: "Create daily database backup job"
+  cron: name="daily database backup"
+        minute="0"
+        hour="6"
+        job="mysqldump -h {{ mariadb_backup_hostname }} {{ item }} > {{ mariadb_backup_path }}/{{ item }}_daily_`date +%Y-%m-%d_%H%M%S`.sql"
+  with_items: mariadb_backup_databases
+
+- name: "Create weekly database backup job"
+  cron: name="weekly database backup"
+        minute="0"
+        hour="6"
+        weekday="0"
+        job="mysqldump -h {{ mariadb_backup_hostname }} {{ item }} > {{ mariadb_backup_path }}/{{ item }}_weekly_`date +%Y-%m-%d_%H%M%S`.sql"
+  with_items: mariadb_backup_databases
+
+- name: Copy .my.cnf file with root password credentials
+  template:
+    src: "user-my.cnf.j2"
+    dest: "/root/.my.cnf"
+    owner: root
+    group: root
+    mode: 0600

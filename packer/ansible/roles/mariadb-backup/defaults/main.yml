@@ -1,0 +1,6 @@
+mariadb_backup_hostname: localhost
+mariadb_backup_username: root
+mariadb_backup_password: root
+
+mariadb_backup_path: /media/mariadb_backup
+mariadb_backup_databases: []
