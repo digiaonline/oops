@@ -1,0 +1,13 @@
+#
+# Installation
+#
+- name: Add apt key
+  apt_key: keyserver=keyserver.ubuntu.com id=0xcbcb082a1bb943db
+
+- name: Add apt repository
+  apt_repository: repo='deb http://mirror.netinch.com/pub/mariadb/repo/10.1/ubuntu {{ ansible_distribution_release }} main' state=present
+
+- name: Install packages
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - mariadb-client
