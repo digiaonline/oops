@@ -38,4 +38,4 @@
   sudo: yes
   sysctl:
     name: vm.swappiness
-    value: "1"
+    value: {{ swap_swappiness }}

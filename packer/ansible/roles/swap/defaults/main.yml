@@ -2,3 +2,8 @@
 # Swap space (bytes)
 #
 swap_space: 1073741824
+
+#
+# Swappiness level (0 = avoid swapping until really necessary)
+#
+swap_swappiness: 0
