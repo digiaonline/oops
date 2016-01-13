@@ -6,3 +6,7 @@ mariadb_packages:
   - mariadb-common
   - mariadb-server
   - python-mysqldb
+
+# databases and users
+mariadb_databases: []
+mariadb_users: []
