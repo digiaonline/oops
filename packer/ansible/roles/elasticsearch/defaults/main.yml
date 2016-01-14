@@ -1,1 +1,6 @@
+# installation parameters
 elasticsearch_version : 2.x
+
+# network parameters
+elasticsearch_network_host: _local_
+elasticsearch_http_port: 9200

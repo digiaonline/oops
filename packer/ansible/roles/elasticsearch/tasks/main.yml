@@ -13,3 +13,8 @@
 
 - name: Ensure service is enabled and running
   service: name=elasticsearch state=started enabled=true
+
+- name: Configure using template
+  template: dest="/etc/elasticsearch/elasticsearch.yml"
+            src="elasticsearch.yml.j2"
+  notify: restart elasticsearch
