@@ -1,0 +1,10 @@
+- name: Configure jobs
+  cron: name="{{ item.name }}"
+        user="{{ item.user }}"
+        minute="{{ item.minute | default('*') }}"
+        hour="{{ item.hour | default('*') }}"
+        day="{{ item.day | default('*') }}"
+        month="{{ item.month | default('*') }}"
+        weekday="{{ item.weekday | default('*') }}"
+        job="{{ item.job }}"
+  with_items: cron_jobs
