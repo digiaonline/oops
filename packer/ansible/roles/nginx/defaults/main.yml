@@ -1,4 +1,5 @@
 nginx_server_name: "{{ hostname }}"
+nginx_server_aliases: ""
 nginx_web_root: /var/www
 nginx_web_user: www-data
 nginx_web_group: www-data
