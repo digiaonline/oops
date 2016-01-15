@@ -11,3 +11,6 @@
 
 - name: Insert authorized_keys
   authorized_key: user={{ deploy_user }} key="{{ lookup('file', deploy_user_public_key) }}" state=present
+
+- name: Ensure the root password is disabled
+  command: usermod -p '!' root
