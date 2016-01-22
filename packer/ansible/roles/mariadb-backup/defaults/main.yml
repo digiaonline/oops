@@ -4,3 +4,4 @@ mariadb_backup_password: root
 
 mariadb_backup_path: /media/mariadb_backup
 mariadb_backup_databases: []
+mariadb_backup_months_to_keep: 1
