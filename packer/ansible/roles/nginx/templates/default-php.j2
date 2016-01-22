@@ -3,7 +3,7 @@ server {
     listen 80;
     server_name {{ nginx_server_aliases }};
 
-    return 301 http://{{ nginx_server_name }}$request_uri;
+    return 301 http://{{ nginx_server_aliases_redirect }}$request_uri;
 }
 {% endif %}
 
