@@ -2,14 +2,20 @@
   sudo: yes
   apt: pkg=nginx state=latest update_cache=yes cache_valid_time=3600
 
-- name: Ensure web root directory exists
+- name: Check if web root exists
+  stat: path={{ nginx_web_root }}
+  register: web_root_stat
+
+- name: Create web root directory
   file: path={{ nginx_web_root }} state=directory
+  when: not web_root_stat.stat.exists
 
 - name: Ensure web root directory has proper permissions
   file: path={{ nginx_web_root }}
         owner={{ nginx_web_user }}
         group={{ nginx_web_group }}
         mode="u=rwX,g=rwXs,o=rX"
+  when: not web_root_stat.stat.exists
 
 - name: Change default nginx site
   sudo: yes
