@@ -19,3 +19,9 @@ nginx_fastcgi_pass: localhost:9000
 # Maximum upload size that can be sent by a client
 #
 nginx_client_max_body_size: 10m
+
+#
+# Additional sites to configure. Each item should be a dictionary with the following keys:
+# web_root, host_template, host_file
+#
+nginx_additional_sites: []

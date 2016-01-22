@@ -27,19 +27,19 @@
 #
 - name: Add potential additional sites
   template: src={{ item.host_template }} dest={{ item.host_file }}
-  with_items: nginx_additional_sites | default([])
+  with_items: nginx_additional_sites
   notify: restart nginx
 
 - name: Ensure additional web roots exist
   file: path={{ item.web_root }} state=directory
-  with_items: nginx_additional_sites | default([])
+  with_items: nginx_additional_sites
 
 - name: Ensure additional web root directories have proper permissions
   file: path={{ item.web_root }}
         owner={{ nginx_web_user }}
         group={{ nginx_web_group }}
         mode="u=rwX,g=rwXs,o=rX"
-  with_items: nginx_additional_sites | default([])
+  with_items: nginx_additional_sites
 
 - name: Ensure all available sites are enabled
   file: src=/etc/nginx/sites-available/{{ item | basename }} dest=/etc/nginx/sites-enabled/{{ item | basename }} state=link
