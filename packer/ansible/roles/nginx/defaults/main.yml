@@ -1,4 +1,11 @@
+#
+# The domain name (or names) the server should serve requests for
+#
 nginx_server_name: "{{ hostname }}"
+
+#
+# Domain names that should be redirected to the domain specified by nginx_server_aliases_redirect
+#
 nginx_server_aliases: ""
 
 #
