@@ -6,3 +6,4 @@
 - name: Configure using template
   template: dest="/etc/php5/mods-available/newrelic.ini"
             src="newrelic.ini.j2"
+  notify: restart php5-fpm
