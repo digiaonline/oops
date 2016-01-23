@@ -18,3 +18,5 @@ php_fpm_ini_template: php.ini.j2
 # make sure you use matching values for nginx too
 php_upload_max_filesize: 10M
 php_post_max_size: 10M
+
+php_timezone: Europe/Helsinki
