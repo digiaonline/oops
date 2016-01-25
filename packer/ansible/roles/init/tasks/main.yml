@@ -1,3 +1,11 @@
+- name: Configure time zone
+  copy: content="{{ init_timezone }}"
+        dest=/etc/timezone
+        owner=root
+        group=root
+        mode=0644
+  notify: reconfigure tzdata
+
 - name: Install common packages
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
   with_items:
