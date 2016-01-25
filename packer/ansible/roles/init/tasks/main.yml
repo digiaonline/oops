@@ -19,6 +19,7 @@
     - python-software-properties
     - wget
     - zsh
+    - ntp
 
 - name: Set the hostname in /etc/hostname
   shell: echo {{ hostname }} > /etc/hostname
