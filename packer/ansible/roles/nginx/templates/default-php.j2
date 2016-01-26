@@ -18,7 +18,7 @@ server {
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
-        sendfile off;
+        sendfile {{ nginx_sendfile }};
     }
 
     error_page 404 /404.html;

@@ -23,6 +23,11 @@ nginx_host_file: /etc/nginx/sites-available/default
 nginx_host_template: default.j2
 
 #
+# Whether sendfile should be enabled or not
+#
+nginx_sendfile: off
+
+#
 # Only applicable when PHP is used
 #
 nginx_fastcgi_pass: localhost:9000
