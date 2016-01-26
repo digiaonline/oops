@@ -1,8 +1,13 @@
 - name: "Ensure backup target directory exists"
-  file: path={{ mariadb_backup_path }} state=directory
+  file: path={{ mariadb_backup_path }}
+        state=directory
+        owner={{ mariadb_backup_username }}
+        group={{ mariadb_backup_username }}
+        mode=0755
 
 - name: "Create daily database backup job"
   cron: name="daily database backup"
+        user={{ mariadb_backup_username }}
         minute="0"
         hour="6"
         job="mysqldump -h {{ mariadb_backup_database_hostname }} {{ item }} | gzip > {{ mariadb_backup_path }}/{{ item }}_daily_`date +\%Y-\%m-\%d_\%H\%M\%S`.sql.gz"
@@ -10,6 +15,7 @@
 
 - name: "Create weekly database backup job"
   cron: name="weekly database backup"
+        user={{ mariadb_backup_username }}
         minute="0"
         hour="6"
         weekday="0"
@@ -18,13 +24,13 @@
 
 - name: "Create remove obsolete backups jobs"
   cron: name="remove obsolete backups"
+        user={{ mariadb_backup_username }}
         special_time="monthly"
         job="rm -f {{ mariadb_backup_path }}/*_`date --date=\"$(date +\%Y-\%m-15) -{{ mariadb_backup_months_to_keep }} month\" +\%Y-\%m`*"
 
 - name: Copy .my.cnf file with root password credentials
-  template:
-    src: "user-my.cnf.j2"
-    dest: "/root/.my.cnf"
-    owner: root
-    group: root
-    mode: 0600
+  template: src="user-my.cnf.j2"
+            dest="/home/{{ mariadb_backup_username }}/.my.cnf"
+            owner={{ mariadb_backup_username }}
+            group={{ mariadb_backup_username }}
+            mode=0600
