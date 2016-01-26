@@ -1,0 +1,12 @@
+- name: Install python-pip
+  apt: pkg=python-pip state=latest update_cache=yes cache_valid_time=3600
+
+- name: Install awscli
+  command: pip install awscli creates=/usr/local/bin/aws
+
+- name: Configure client
+  template: src="config.j2"
+            dest=/home/{{ awscli_user }}/.aws/config
+            owner={{ awscli_user }}
+            group={{ awscli_user }}
+            mode=0600
