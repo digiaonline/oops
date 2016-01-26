@@ -16,7 +16,7 @@
         job="mysqldump -h {{ mariadb_backup_database_hostname }} {{ item }} | gzip > {{ mariadb_backup_path }}/{{ item }}_weekly_`date +\%Y-\%m-\%d_\%H\%M\%S`.sql.gz"
   with_items: mariadb_backup_databases
 
-- name: "Remove obsolete backups"
+- name: "Create remove obsolete backups jobs"
   cron: name="remove obsolete backups"
         special_time="monthly"
         job="rm -f {{ mariadb_backup_path }}/*_`date --date=\"$(date +\%Y-\%m-15) -{{ mariadb_backup_months_to_keep }} month\" +\%Y-\%m`*"
