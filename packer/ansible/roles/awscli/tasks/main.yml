@@ -4,6 +4,13 @@
 - name: Install awscli
   command: pip install awscli creates=/usr/local/bin/aws
 
+- name: Create client configuration directory
+  file: path=/home/{{ awscli_user }}/.aws
+        state=directory
+        owner={{ awscli_user }}
+        group={{ awscli_user }}
+        mode=0755
+
 - name: Configure client
   template: src="config.j2"
             dest=/home/{{ awscli_user }}/.aws/config
