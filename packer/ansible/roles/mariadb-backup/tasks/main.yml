@@ -28,6 +28,13 @@
         special_time="monthly"
         job="rm -f {{ mariadb_backup_path }}/*_`date --date=\"$(date +\%Y-\%m-15) -{{ mariadb_backup_months_to_keep }} month\" +\%Y-\%m`*"
 
+- name: "Create synchronize with S3 job"
+  cron: name="synchronize with S3"
+        user={{ mariadb_backup_username }}
+        minute="0"
+        hour="9"
+        job="/usr/local/bin/aws s3 sync {{ mariadb_backup_path }} s3://{{ mariadb_backup_s3_bucket }}/{{ mariadb_backup_s3_directory }} --region {{ mariadb_backup_s3_region }}"
+
 - name: Copy .my.cnf file with root password credentials
   template: src="user-my.cnf.j2"
             dest="/home/{{ mariadb_backup_username }}/.my.cnf"
