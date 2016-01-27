@@ -1,6 +1,7 @@
 {% if nginx_server_aliases != "" %}
 server {
     listen 80;
+    listen [::]:80;
     server_name {{ nginx_server_aliases }};
 
     return 301 http://{{ nginx_server_aliases_redirect }}$request_uri;
@@ -9,6 +10,7 @@ server {
 
 server {
     listen 80;
+    listen [::]:80;
     server_name {{ nginx_server_name }};
 
     root {{ nginx_web_root }};
