@@ -1,0 +1,5 @@
+#
+# Override if you need additional gems installed
+#
+capistrano_gems:
+  - capistrano
