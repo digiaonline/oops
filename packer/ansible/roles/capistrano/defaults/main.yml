@@ -3,3 +3,4 @@
 #
 capistrano_gems:
   - capistrano
+  - capistrano-git-submodule-strategy
