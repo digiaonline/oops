@@ -1,0 +1,2 @@
+- name: Install packages
+  command: gem install capistrano

@@ -1,0 +1,7 @@
+- name: Add apt repository
+  apt_repository: repo="ppa:brightbox/ruby-ng"
+                  update_cache=yes
+
+- name: Install packages
+  apt: pkg={{ item }}
+  with_items: ruby_packages
