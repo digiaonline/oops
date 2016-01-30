@@ -8,6 +8,10 @@ bind-address = {{ mariadb_bind_address }}
 datadir = {{ mariadb_datadir }}
 socket = {{ mariadb_socket }}
 
+# Character set and collation
+collation-server = {{ mariadb_collation_server }}
+character-set-server = {{ mariadb_character_set_server }}
+
 # Logging configuration.
 {% if mariadb_log_error == 'syslog' or mariadb_log == 'syslog' %}
 syslog
