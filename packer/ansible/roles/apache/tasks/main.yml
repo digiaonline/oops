@@ -1,0 +1,15 @@
+- name: Install packages
+  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
+  with_items: apache_packages
+
+- name: Enable modules
+  command: "a2enmod {{ item }}"
+  with_items: apache_modules
+
+- name: Disable default site
+  file: path=/etc/apache2/sites-enabled/000-default.conf state=absent
+
+- name: "Symlink configured sites"
+  file: src={{ item.src }} dest="/etc/apache2/sites-enabled/{{ item.dest }}" state=link
+  with_items: apache_site_symlinks
+  notify: restart apache

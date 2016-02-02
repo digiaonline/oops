@@ -1,0 +1,11 @@
+apache_packages:
+  - apache2
+  - libapache2-mod-php5
+
+apache_modules:
+  - expires
+  - headers
+  - rewrite
+
+# e.g. - { src: /path/to/file, dest: default.conf }
+apache_site_symlinks: []
