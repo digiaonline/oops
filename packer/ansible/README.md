@@ -38,6 +38,24 @@ you need to expose more ports than this, override `ufw_allowed_incoming_ports`. 
 open to the world (useful for servers that only need to be internally accessible), override `ufw_allowed_incoming_ports`
 to the value `[]`.
 
+### xdebug
+
+If you want to be able to debug your code, follow these instructions to configure PhpStorm properly:
+
+1. Go to `Run -> Edit Configuration`
+2. Click `Add`, then select `PHP Remote Debug`
+3. Give the configuration a proper name, e.g. the name of your project
+4. Click the `...` button next to the server list to configure a server
+	1. `Name:` a proper name, e.g. the name of your project
+	2. `Host:` the IP address of your Vagrant box (or hostname if you've configured `/etc/hosts`)
+	3. `Port:` 80
+	4. `Debugger:` Xdebug
+	5. Check the "Use path mappings" checkbox, then make sure the directory that contains your `Vagrantfile` is mapped 
+	   to `/vagrant` on the server. If your project uses custom Vagrant shared folders you'll have to figure out the 
+	   correct mappings on your own.
+5. Close the "add server" dialog and make sure the server you just added is selected in the drop down
+6. Set `Ide key:` to `vagrant`
+
 ### Adding new roles
 
 Try to refrain from using roles from Ansible Galaxy. Even though you may find what you're looking for there, the 
