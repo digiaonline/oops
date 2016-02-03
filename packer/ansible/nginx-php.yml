@@ -1,7 +1,7 @@
 # Main playbook that applies to all hosts
 - hosts: all
   connection: local
-  sudo: true
+  become: true
   vars:
     hostname: nginx-php
     nginx_host_template: default-php.j2
@@ -15,6 +15,6 @@
 # Vagrant-specific playbook
 - hosts: vagrant
   connection: local
-  sudo: true
+  become: true
   roles:
     - xdebug

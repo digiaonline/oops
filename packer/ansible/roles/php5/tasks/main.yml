@@ -1,5 +1,4 @@
 - name: Add apt repository
-  sudo: yes
   apt_repository: repo=ppa:ondrej/{{ php_ppa }}
 
 - name: Install SAPIs
@@ -7,7 +6,6 @@
   with_items: php_sapis
 
 - name: Install modules
-  sudo: yes
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
   with_items: php_packages
 
@@ -34,7 +32,6 @@
 
 # configure SAPIs
 - name: Configure php5-fpm to use TCP/IP rather than a socket
-  sudo: yes
   template: src={{ php_fpm_pool_www_template }} dest={{ php_fpm_pool_www_file }}
   when: php_sapi_fpm_installed.stat.exists == True
   notify: restart php5-fpm

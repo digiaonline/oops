@@ -1,6 +1,5 @@
 - name: Creating deployment user
   user: name="{{ deploy_user }}" append=yes groups=sudo shell=/bin/bash
-  sudo: yes
 
 - name: Configure password-less sudo for deployment user
   lineinfile: "dest=/etc/sudoers.d/10-nopasswd owner=root group=root mode=0440

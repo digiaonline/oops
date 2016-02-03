@@ -1,13 +1,10 @@
 - name: Add apt repository
-  sudo: yes
   shell: curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
 
 - name: Install packages
-  sudo: yes
   apt: pkg=nodejs state=latest update_cache=yes
 
 - name: Install global npm packages
-  sudo: yes
   shell: "which {{item}} || npm install -g {{item}}"
   with_items:
     - bower

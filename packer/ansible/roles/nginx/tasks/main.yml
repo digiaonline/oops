@@ -1,5 +1,4 @@
 - name: Install packages
-  sudo: yes
   apt: pkg=nginx state=latest update_cache=yes cache_valid_time=3600
 
 - name: Check if web root exists
@@ -18,7 +17,6 @@
   when: not web_root_stat.stat.exists
 
 - name: Change default nginx site
-  sudo: yes
   template: src={{ nginx_host_template }} dest={{ nginx_host_file }}
   notify: restart nginx
 
