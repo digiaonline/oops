@@ -11,10 +11,15 @@
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
   with_items: php_packages
 
+- name: Check if php5-fpm is installed
+  stat: path=/usr/sbin/php5-fpm
+  register: php_fpm_exists
+
 - name: Configure php5-fpm to use TCP/IP rather than a socket
   sudo: yes
   template: src={{ php_fpm_pool_www_template }} dest={{ php_fpm_pool_www_file }}
   notify: restart php5-fpm
+  when: php_fpm_exists.stat.exists == True
 
 - name: Configure php.ini using template
   sudo: yes
