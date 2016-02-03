@@ -1,0 +1,14 @@
+- name: Install packages
+  apt: pkg=sphinxsearch update_cache=yes cache_valid_time=3600
+
+- name: Configure /etc/sphinxsearch/sphinx.conf
+  copy: src={{ sphinx_config_file }} dest=/etc/sphinxsearch/sphinx.conf
+
+- name: Create all indexes
+  command: indexer --all
+
+- name: Configure /etc/default/sphinxsearch using template
+  template: src=sphinx.default.conf.j2 dest=/etc/default/sphinxsearch
+
+- name: Ensure service is enabled and running
+  service: name=sphinxsearch state=started enabled=true
