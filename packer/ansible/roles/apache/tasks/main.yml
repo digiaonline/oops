@@ -9,7 +9,7 @@
 - name: Disable default site
   file: path=/etc/apache2/sites-enabled/000-default.conf state=absent
 
-- name: "Symlink configured sites"
-  file: src={{ item.src }} dest="/etc/apache2/sites-enabled/{{ item.dest }}" state=link force=yes
-  with_items: apache_site_symlinks
+- name: "Copy configured site files"
+  copy: src={{ item }} dest="/etc/apache2/sites-enabled"
+  with_items: apache_site_files
   notify: restart apache
