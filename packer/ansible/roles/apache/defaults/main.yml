@@ -6,5 +6,6 @@ apache_modules:
   - expires
   - headers
   - rewrite
+  - ssl
 
 apache_site_files: []
