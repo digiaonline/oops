@@ -11,21 +11,39 @@
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
   with_items: php_packages
 
-- name: Check if php5-fpm is installed
-  stat: path=/usr/sbin/php5-fpm
-  register: php_fpm_exists
+# check for SAPIs
+- name: Check if CLI SAPI is installed
+  stat: path=/etc/php5/cli
+  register: php_sapi_cli_installed
 
+- name: Check if fpm SAPI is installed
+  stat: path=/etc/php5/fpm
+  register: php_sapi_fpm_installed
+
+- name: Check if Apache SAPI is installed
+  stat: path=/etc/php5/apache
+  register: php_sapi_apache_installed
+
+# configure SAPIs
 - name: Configure php5-fpm to use TCP/IP rather than a socket
   sudo: yes
   template: src={{ php_fpm_pool_www_template }} dest={{ php_fpm_pool_www_file }}
+  when: php_sapi_fpm_installed.stat.exists == True
   notify: restart php5-fpm
-  when: php_fpm_exists.stat.exists == True
 
-- name: Configure all installed SAPIs with php.ini using template
-  sudo: yes
-  template: src={{ php_fpm_ini_template }} dest=/etc/php5/{{ item.name }}/php.ini
-  with_items: php_sapis
+- name: Configure cli SAPI with php.ini using template
+  template: src={{ php_ini_template }} dest=/etc/php5/cli/php.ini
+  when: php_sapi_cli_installed.stat.exists == True
+
+- name: Configure fpm SAPI with php.ini using template
+  template: src={{ php_ini_template }} dest=/etc/php5/fpm/php.ini
+  when: php_sapi_fpm_installed.stat.exists == True
   notify: restart php5-fpm
+
+- name: Configure Apache SAPI with php.ini using template
+  template: src={{ php_ini_template }} dest=/etc/php5/apache2/php.ini
+  when: php_sapi_apache_installed.stat.exists == True
+  notify: restart apache2
 
 - name: Install Composer
   shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
