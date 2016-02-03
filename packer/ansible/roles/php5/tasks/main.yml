@@ -21,9 +21,10 @@
   notify: restart php5-fpm
   when: php_fpm_exists.stat.exists == True
 
-- name: Configure php.ini using template
+- name: Configure all installed SAPIs with php.ini using template
   sudo: yes
-  template: src={{ php_fpm_ini_template }} dest={{ php_fpm_ini_file }}
+  template: src={{ php_fpm_ini_template }} dest=/etc/php5/{{ item.name }}/php.ini
+  with_items: php_sapis
   notify: restart php5-fpm
 
 - name: Install Composer
