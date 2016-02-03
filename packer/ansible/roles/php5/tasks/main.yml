@@ -2,9 +2,13 @@
   sudo: yes
   apt_repository: repo=ppa:ondrej/{{ php_ppa }}
 
-- name: Install packages
+- name: Install SAPIs
+  apt: pkg={{ item.package }} state=latest update_cache=yes
+  with_items: php_sapis
+
+- name: Install modules
   sudo: yes
-  apt: pkg={{ item }} state=latest update_cache=yes
+  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
   with_items: php_packages
 
 - name: Configure php5-fpm to use TCP/IP rather than a socket
