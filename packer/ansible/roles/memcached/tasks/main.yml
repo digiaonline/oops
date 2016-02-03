@@ -1,0 +1,6 @@
+- name: Install packages
+  apt: pkg=memcached state=latest update_cache=true cache_valid_time=3600
+
+- name: Configure using template
+  template: src=memcached.conf.j2 dest=/etc/memcached.conf
+  notify: restart memcached
