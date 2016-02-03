@@ -21,7 +21,7 @@
   register: php_sapi_fpm_installed
 
 - name: Check if Apache SAPI is installed
-  stat: path=/etc/php5/apache
+  stat: path=/etc/php5/apache2
   register: php_sapi_apache_installed
 
 # configure SAPIs
