@@ -10,6 +10,6 @@
   file: path=/etc/apache2/sites-enabled/000-default.conf state=absent
 
 - name: "Symlink configured sites"
-  file: src={{ item.src }} dest="/etc/apache2/sites-enabled/{{ item.dest }}" state=link
+  file: src={{ item.src }} dest="/etc/apache2/sites-enabled/{{ item.dest }}" state=link force=yes
   with_items: apache_site_symlinks
   notify: restart apache
