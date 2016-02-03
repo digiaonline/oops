@@ -11,6 +11,14 @@
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
   with_items: php_packages
 
+- name: Install PEAR
+  apt: pkg=php-pear state=latest update_cache=yes cache_valid_time=3600
+  when: php_pear_packages | length > 0
+
+- name: Install PEAR packages
+  command: pear install {{ item }}
+  with_items: php_pear_packages
+
 # check for SAPIs
 - name: Check if CLI SAPI is installed
   stat: path=/etc/php5/cli
