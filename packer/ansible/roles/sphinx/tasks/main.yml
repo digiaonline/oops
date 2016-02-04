@@ -4,11 +4,8 @@
 - name: Configure /etc/sphinxsearch/sphinx.conf
   copy: src={{ sphinx_config_file }} dest=/etc/sphinxsearch/sphinx.conf
 
-- name: Create all indexes
-  command: indexer --all
-
 - name: Configure /etc/default/sphinxsearch using template
   template: src=sphinx.default.conf.j2 dest=/etc/default/sphinxsearch
 
-- name: Ensure service is enabled and running
-  service: name=sphinxsearch state=started enabled=true
+- name: Ensure service is disabled and stopped (cannot start without index)
+  service: name=sphinxsearch state=stopped enabled=false
