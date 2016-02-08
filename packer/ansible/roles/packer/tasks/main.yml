@@ -1,0 +1,5 @@
+- name: Download the archive
+  command: curl -o /tmp/packer.zip https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip
+
+- name: Unpack the archive
+  unarchive: src=/tmp/packer.zip dest=/usr/local/bin copy=no

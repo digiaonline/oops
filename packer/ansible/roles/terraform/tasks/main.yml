@@ -1,0 +1,5 @@
+- name: Download the archive
+  command: curl -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+
+- name: Unpack the archive
+  unarchive: src=/tmp/terraform.zip dest=/usr/local/bin copy=no

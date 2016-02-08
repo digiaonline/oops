@@ -20,3 +20,5 @@
   roles:
     - xdebug
     - nodejs
+    - packer
+    - terraform
