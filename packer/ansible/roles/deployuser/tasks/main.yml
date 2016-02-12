@@ -13,3 +13,6 @@
 
 - name: Ensure the root password is disabled
   command: usermod -p '!' root
+
+- name: Ensure home directory permissions are correct
+  command: chown -R {{ deploy_user }}:{{ deploy_user }} /home/{{ deploy_user }}
