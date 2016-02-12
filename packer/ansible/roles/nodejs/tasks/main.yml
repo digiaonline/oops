@@ -6,15 +6,4 @@
 
 - name: Install global npm packages
   shell: "which {{item}} || npm install -g {{item}}"
-  with_items:
-    - bower
-    - gulp
-    - grunt-cli
-    - grunt
-    - forever
-    - supervisor
-    - pm2
-    - coffee-script
-    - less
-    - yo
-    - browserify
+  with_items: nodejs_npm_global_packages

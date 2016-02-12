@@ -1,0 +1,12 @@
+nodejs_npm_global_packages:
+  - bower
+  - gulp
+  - grunt-cli
+  - grunt
+  - forever
+  - supervisor
+  - pm2
+  - coffee-script
+  - less
+  - yo
+  - browserify
