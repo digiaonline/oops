@@ -16,6 +16,19 @@
         mode="u=rwX,g=rwXs,o=rX"
   when: not web_root_stat.stat.exists
 
+- name: Install python-passlib (needed for authentication management)
+  apt: pkg=python-passlib state=latest
+  when: nginx_basic_auth_users | length > 0
+
+- name: Configure basic authentication
+  htpasswd: path={{ nginx_basic_auth_user_file }}
+            name={{ item.username }}
+            password={{ item.password }}
+            owner=root
+            group={{ nginx_web_group }}
+            mode=0640
+  with_items: nginx_basic_auth_users
+
 - name: Change default nginx site
   template: src={{ nginx_host_template }} dest={{ nginx_host_file }}
   notify: restart nginx
