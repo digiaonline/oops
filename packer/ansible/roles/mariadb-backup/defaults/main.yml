@@ -4,6 +4,7 @@ mariadb_backup_database_password: root
 
 mariadb_backup_path: /media/mariadb_backup
 mariadb_backup_databases: []
-mariadb_backup_months_to_keep: 1
+mariadb_backup_daily_to_keep: 7
+mariadb_backup_weekly_to_keep: 4
 
 mariadb_backup_s3_directory: backups
