@@ -1,0 +1,16 @@
+- name: Register some computed facts
+  set_fact:
+    solr_archive_name: "solr-{{ solr_version }}.tgz"
+    solr_archive_path: "{{ solr_tmp_dir }}/solr-{{ solr_version }}.tgz"
+
+- name: Create temporary directory to work in
+  file: path={{ solr_tmp_dir }} state=directory
+
+- name: Download archive
+  command: curl -o {{ solr_archive_path }} http://www.nic.funet.fi/pub/mirrors/apache.org/lucene/solr/{{ solr_version }}/{{ solr_archive_name }}
+
+- name: Unpack the archive
+  unarchive: src={{ solr_archive_path }} dest={{ solr_tmp_dir }} copy=no
+
+- name: Run the installer
+  command: "bash {{ solr_tmp_dir }}/solr-{{ solr_version }}/bin/install_solr_service.sh {{ solr_archive_path }} -f -i {{ solr_install_dir}} -d {{ solr_data_dir }} -u {{ solr_user }} -s {{ solr_group }} -p {{ solr_port }}"

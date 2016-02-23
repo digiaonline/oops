@@ -1,0 +1,12 @@
+# which version to install
+solr_version: 5.5.0
+
+# directory to put temporary installation files in
+solr_tmp_dir: /tmp/solr
+
+# parameters to the install script
+solr_install_dir: /opt
+solr_data_dir: /var/solr
+solr_user: solr
+solr_group: solr
+solr_port: 8983
