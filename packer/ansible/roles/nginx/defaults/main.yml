@@ -30,7 +30,7 @@ nginx_sendfile: "off"
 #
 # Only applicable when PHP is used
 #
-nginx_fastcgi_pass: localhost:9000
+nginx_fastcgi_pass: 127.0.0.1:9000
 
 #
 # Maximum upload size that can be sent by a client
