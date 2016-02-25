@@ -1,1 +1,2 @@
 packer_version: 0.8.6
+packer_archive_path: /tmp/packer.zip

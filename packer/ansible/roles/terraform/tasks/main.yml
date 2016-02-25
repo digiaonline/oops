@@ -1,5 +1,8 @@
 - name: Download the archive
-  command: curl -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+  command: curl -o {{ terraform_archive_path }} https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
 
 - name: Unpack the archive
-  unarchive: src=/tmp/terraform.zip dest=/usr/local/bin copy=no
+  unarchive: src={{ terraform_archive_path }} dest=/usr/local/bin copy=no
+
+- name: Delete the archive
+  file: path={{ terraform_archive_path }} state=absent

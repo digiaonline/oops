@@ -1,1 +1,2 @@
 terraform_version: 0.6.11
+terraform_archive_path: /tmp/terraform.zip
