@@ -6,4 +6,4 @@
 
 - name: Install global npm packages
   shell: "which {{item}} || npm install -g {{item}}"
-  with_items: nodejs_npm_global_packages
+  with_items: "{{ nodejs_npm_global_packages }}"

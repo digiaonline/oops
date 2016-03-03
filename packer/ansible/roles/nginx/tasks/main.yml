@@ -27,7 +27,7 @@
             owner=root
             group={{ nginx_web_group }}
             mode=0640
-  with_items: nginx_basic_auth_users
+  with_items: "{{ nginx_basic_auth_users }}"
 
 - name: Change default nginx site
   template: src={{ nginx_host_template }} dest={{ nginx_host_file }}
