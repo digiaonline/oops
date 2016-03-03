@@ -1,3 +1,8 @@
+#
+# The version to install. This must match what is used in the installation URLs, e.g.
+# for "https://deb.nodesource.com/setup_4.x" you should use "4.x"
+#
+nodejs_version: 4.x
 nodejs_npm_global_packages:
   - bower
   - gulp

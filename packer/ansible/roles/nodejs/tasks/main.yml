@@ -1,5 +1,5 @@
 - name: Add apt repository
-  shell: curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -
+  shell: curl -sL https://deb.nodesource.com/setup_{{ nodejs_version }} | sudo -E bash -
 
 - name: Install packages
   apt: pkg=nodejs state=latest update_cache=yes
