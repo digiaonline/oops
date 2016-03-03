@@ -26,13 +26,13 @@
   cron: name="remove obsolete daily backups"
         user={{ mariadb_backup_username }}
         special_time="daily"
-        job="find {{ mariadb_backup_path }} -name '*daily*' -mtime +{{ mariadb_backup_daily_to_keep }} -exec rm {} \;"
+        job="find {{ mariadb_backup_path }} -name '*daily*' -mtime +{{ mariadb_backup_daily_to_keep - 1 }} -exec rm {} \;"
 
 - name: "Create remove obsolete weekly backups jobs"
   cron: name="remove obsolete weekly backups"
         user={{ mariadb_backup_username }}
         special_time="weekly"
-        job="find {{ mariadb_backup_path }} -name '*weekly*' -mtime +{{ mariadb_backup_weekly_to_keep * 7 }} -exec rm {} \;"
+        job="find {{ mariadb_backup_path }} -name '*weekly*' -mtime +{{ mariadb_backup_weekly_to_keep * 7 - 1 }} -exec rm {} \;"
 
 - name: "Create synchronize with S3 job"
   cron: name="synchronize with S3"
