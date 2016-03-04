@@ -3,11 +3,11 @@
 
 - name: Install SAPIs
   apt: pkg={{ item.package }} state=latest update_cache=yes
-  with_items: php_sapis
+  with_items: "{{ php_sapis }}"
 
 - name: Install modules
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
-  with_items: php_packages
+  with_items: "{{ php_packages }}"
 
 - name: Install PEAR
   apt: pkg=php-pear state=latest update_cache=yes cache_valid_time=3600
@@ -15,7 +15,7 @@
 
 - name: Install PEAR packages
   command: pear install -f {{ item }}
-  with_items: php_pear_packages
+  with_items: "{{ php_pear_packages }}"
 
 # check for SAPIs
 - name: Check if CLI SAPI is installed

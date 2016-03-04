@@ -1,10 +1,10 @@
 - name: "Configure allowed incoming ports"
   ufw: rule=allow port={{ item.port }} proto={{ item.protocol }}
-  with_items: ufw_allowed_incoming_ports
+  with_items: "{{ ufw_allowed_incoming_ports }}"
 
 - name: "Configure allowed incoming subnets"
   ufw: rule=allow src={{ item }}
-  with_items: ufw_allowed_incoming_subnets
+  with_items: "{{ ufw_allowed_incoming_subnets }}"
 
 - name: "Enable the firewall"
   ufw: state=enabled policy={{ ufw_policy }}

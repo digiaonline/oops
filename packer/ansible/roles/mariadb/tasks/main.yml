@@ -9,7 +9,7 @@
 
 - name: Install packages
   apt: pkg={{ item }} state=latest update_cache=yes
-  with_items: mariadb_packages
+  with_items: "{{ mariadb_packages }}"
 
 #
 # Configuration
@@ -34,7 +34,7 @@
    name: ""
    host: "{{ item }}"
    state: absent
-  with_items: mariadb_anonymous_hosts.stdout_lines
+  with_items: "{{ mariadb_anonymous_hosts.stdout_lines }}"
 
 - name: Remove test database
   mysql_db: "name='test' state=absent"
@@ -44,7 +44,7 @@
     name: "root"
     host: "{{ item }}"
     password: "{{ mariadb_root_password }}"
-  with_items: mariadb_root_hosts.stdout_lines
+  with_items: "{{ mariadb_root_hosts.stdout_lines }}"
 
 - name: Copy .my.cnf file with root password credentials
   template:
@@ -56,8 +56,8 @@
 
 - name: Create databases
   mysql_db: name={{ item }} state=present login_user=root login_password={{ mariadb_root_password }}
-  with_items: mariadb_databases
+  with_items: "{{ mariadb_databases }}"
 
 - name: Create users
   mysql_user: name={{ item.user }} password={{ item.password }} host={{ item.host }} priv={{ item.database }}.*:ALL state=present login_user=root login_password={{ mariadb_root_password }} append_privs=yes
-  with_items: mariadb_users
+  with_items: "{{ mariadb_users }}"

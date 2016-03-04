@@ -1,3 +1,3 @@
 - name: Install packages
   command: gem install {{ item }}
-  with_items: capistrano_gems
+  with_items: "{{ capistrano_gems }}"

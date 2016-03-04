@@ -4,8 +4,8 @@
 
 - name: Install packages
   apt: pkg={{ item }}
-  with_items: ruby_packages
+  with_items: "{{ ruby_packages }}"
 
 - name: Install gems
   command: gem install {{ item }}
-  with_items: ruby_gems
+  with_items: "{{ ruby_gems }}"

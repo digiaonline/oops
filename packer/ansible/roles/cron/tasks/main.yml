@@ -7,4 +7,4 @@
         month="{{ item.month | default('*') }}"
         weekday="{{ item.weekday | default('*') }}"
         job="{{ item.job }}"
-  with_items: cron_jobs
+  with_items: "{{ cron_jobs }}"

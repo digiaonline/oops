@@ -11,7 +11,7 @@
         minute="0"
         hour="6"
         job="mysqldump -h {{ mariadb_backup_database_hostname }} {{ item }} | gzip > {{ mariadb_backup_path }}/{{ item }}_daily_`date +\%Y-\%m-\%d_\%H\%M\%S`.sql.gz"
-  with_items: mariadb_backup_databases
+  with_items: "{{ mariadb_backup_databases }}"
 
 - name: "Create weekly database backup job"
   cron: name="weekly database backup"
@@ -20,7 +20,7 @@
         hour="6"
         weekday="0"
         job="mysqldump -h {{ mariadb_backup_database_hostname }} {{ item }} | gzip > {{ mariadb_backup_path }}/{{ item }}_weekly_`date +\%Y-\%m-\%d_\%H\%M\%S`.sql.gz"
-  with_items: mariadb_backup_databases
+  with_items: "{{ mariadb_backup_databases }}"
 
 - name: "Create remove obsolete daily backups jobs"
   cron: name="remove obsolete daily backups"
