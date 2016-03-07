@@ -1,0 +1,2 @@
+# ensure all shell scripts use LF line endings
+*.sh -crlf
