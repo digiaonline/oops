@@ -1,0 +1,3 @@
+consul_version: 0.6.3
+consul_archive_sha256sum: b0532c61fec4a4f6d130c893fd8954ec007a6ad93effbe283a39224ed237e250
+consul_archive_path: /tmp/consul.zip

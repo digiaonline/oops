@@ -1,0 +1,7 @@
+- name: Download archive
+  get_url: url="https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_amd64.zip"
+           dest={{ consul_archive_path }}
+           sha256sum={{ consul_archive_sha256sum }}
+
+- name: Unpack the archive
+  unarchive: src={{ consul_archive_path }} dest=/usr/local/bin copy=no
