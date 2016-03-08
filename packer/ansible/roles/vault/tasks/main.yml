@@ -1,0 +1,7 @@
+- name: Download archive
+  get_url: url="https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_linux_amd64.zip"
+           dest={{ vault_archive_path }}
+           sha256sum={{ vault_archive_sha256sum }}
+
+- name: Unpack the archive
+  unarchive: src={{ vault_archive_path }} dest=/usr/local/bin copy=no
