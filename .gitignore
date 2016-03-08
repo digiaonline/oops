@@ -1,3 +1,4 @@
 .idea
 packer/packer_cache
 terraform/.terraform/terraform.tfstate.backup
+packer/ansible/lookup_plugins/vault.pyc
