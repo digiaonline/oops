@@ -7,7 +7,11 @@ if [ $# -lt 1 ]; then
 fi
 
 ENVIRONMENT=$1
-export BRANCH=$2
+
+# Capistrano defaults to "master" if BRANCH is not set
+if [ $# -eq 2 ]; then
+	export BRANCH=$2
+fi
 
 cd /vagrant
 cap $ENVIRONMENT deploy
