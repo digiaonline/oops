@@ -4,7 +4,7 @@
 
 - name: Register certificate request/renewal command
   set_fact:
-    letsencrypt_command: "{{ letsencrypt_path }}/letsencrypt-auto certonly --webroot --agree-tos --expand --email {{ letsencrypt_email }} {{ letsencrypt_webroot_domain_parameters }} "
+    letsencrypt_command: "{{ letsencrypt_path }}/letsencrypt-auto certonly --webroot --agree-tos --expand --keep-until-expiring --email {{ letsencrypt_email }} {{ letsencrypt_webroot_domain_parameters }} "
     letsencrypt_cronjob_command: "{{ letsencrypt_path }}/letsencrypt-auto certonly --webroot --agree-tos --expand --force-renewal --email {{ letsencrypt_email }} {{ letsencrypt_webroot_domain_parameters }} "
 
 - name: Request certificates
