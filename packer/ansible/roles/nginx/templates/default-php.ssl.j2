@@ -1,0 +1,57 @@
+{% if nginx_server_aliases != "" %}
+server {
+    listen 80;
+    listen [::]:80;
+    server_name {{ nginx_server_aliases }};
+
+    return 301 http://{{ nginx_server_aliases_redirect }}$request_uri;
+}
+{% endif %}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name {{ nginx_server_name }};
+
+    return 302 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name {{ nginx_server_name }};
+
+    root {{ nginx_web_root }};
+    index index.php index.html;
+
+    client_max_body_size {{ nginx_client_max_body_size }};
+
+    ssl_certificate {{ nginx_ssl_certificate }};
+    ssl_certificate_key {{ nginx_ssl_certificate_key }};
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+        sendfile {{ nginx_sendfile }};
+        
+        {% if nginx_basic_auth_users %}
+		auth_basic "Restricted";
+		auth_basic_user_file {{ nginx_basic_auth_user_file }};
+		{% endif %}
+    }
+
+    error_page 404 /404.html;
+
+    error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+        root /usr/share/nginx/html;
+    }
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass {{ nginx_fastcgi_pass }};
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+        include fastcgi_params;
+    }
+}
