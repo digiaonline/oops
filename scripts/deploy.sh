@@ -2,7 +2,7 @@
 
 # Sanity check
 if [ $# -lt 1 ]; then
-    echo "$0: usage: deploy.sh <environment> [ <branch|revision|tag>"
+    echo "$0: usage: deploy.sh <environment> [ <branch|tag|revision> ]"
     exit 1
 fi
 
