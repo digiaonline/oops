@@ -23,4 +23,4 @@ php_post_max_size: 10M
 
 php_timezone: Europe/Helsinki
 
-php_composer_auth_json_path: /home/vagrant/.config/composer/auth.json
+php_composer_config_path: /home/vagrant/.config/composer
