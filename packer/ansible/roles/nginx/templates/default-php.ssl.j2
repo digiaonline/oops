@@ -34,9 +34,9 @@ server {
         sendfile {{ nginx_sendfile }};
         
         {% if nginx_basic_auth_users %}
-		auth_basic "Restricted";
-		auth_basic_user_file {{ nginx_basic_auth_user_file }};
-		{% endif %}
+        auth_basic "Restricted";
+        auth_basic_user_file {{ nginx_basic_auth_user_file }};
+        {% endif %}
     }
 
     error_page 404 /404.html;
