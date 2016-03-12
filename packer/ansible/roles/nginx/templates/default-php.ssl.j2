@@ -33,7 +33,7 @@ server {
     ssl_ciphers ECDH+AESGCM:ECDH+AES256:ECDH+AES128:DH+3DES:!ADH:!AECDH:!MD5;
     ssl_prefer_server_ciphers on;
 
-    ssl_dhparams {{ nginx_ssl_dhparams_path }};
+    ssl_dhparam {{ nginx_ssl_dhparams_path }};
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
