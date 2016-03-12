@@ -1,4 +1,5 @@
 letsencrypt_path: /opt/letsencrypt
+letsencrypt_dhparams_path: /etc/nginx/dhparams.pem
 letsencrypt_cronjob_user: root
 letsencrypt_email: root@example.com
 
