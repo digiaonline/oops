@@ -49,3 +49,8 @@ nginx_additional_sites: []
 #
 nginx_basic_auth_users: []
 nginx_basic_auth_user_file: /etc/nginx/.htpasswd
+
+#
+# Must match letsencrypt_dhparams_path
+#
+nginx_ssl_dhparams_path: /etc/nginx/dhparams.pem
