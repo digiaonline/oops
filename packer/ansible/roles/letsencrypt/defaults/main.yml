@@ -3,9 +3,13 @@ letsencrypt_cronjob_user: root
 letsencrypt_email: root@example.com
 
 #
-# The -w and -d parameters, e.g. "-w /var/www -d example.com"
+# The -w and -d parameters. Example:
 #
-letsencrypt_webroot_domain_parameters: ""
+# letsencrypt_webroot_domain_parameters:
+#    - { webroot: /var/www, domains: ['example.com', 'test.example.com'] }
+#    - { webroot: /opt, domains: ['foo.com', 'bar.com'] }
+#
+letsencrypt_webroot_domain_parameters: []
 
 #
 # If you use the bundled nginx templates, make sure the paths match
