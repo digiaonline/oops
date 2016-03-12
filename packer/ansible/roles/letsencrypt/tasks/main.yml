@@ -17,4 +17,4 @@
         job="{{ letsencrypt_cronjob_command }}"
 
 - name: Create stronger Diffie-Hellman group
-  command: "openssl dhparam -out {{ letsencrypt_dhparams_path }} 2048" creates={{ letsencrypt_dhparams_path }}
+  command: openssl dhparam -out {{ letsencrypt_dhparams_path }} 2048 creates={{ letsencrypt_dhparams_path }}
