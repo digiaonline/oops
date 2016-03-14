@@ -55,6 +55,7 @@
 
 - name: Create Composer configuration directory
   file: path={{ php_composer_config_path }} state=directory
+  when: php_composer_auth_token is defined
 
 - name: Configure Github OAuth token
   template: src=php_composer_auth.json.j2 dest={{ php_composer_config_path }}/auth.json
