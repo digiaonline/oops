@@ -4,9 +4,8 @@
 apt-get -y --purge autoremove
 apt-get -y purge $(dpkg --list |grep '^rc' |awk '{print $2}')
 apt-get -y purge $(dpkg --list |egrep 'linux-image-[0-9]' |awk '{print $3,$2}' |sort -nr |tail -n +2 |grep -v $(uname -r) |awk '{ print $2}')
+rm -rf /var/lib/apt/lists/*
 apt-get -y clean
-
-find /var/lib/apt/lists \! -name lock -type f -delete
 
 # delete linux source
 dpkg --list | awk '{ print $2 }' | grep linux-source | xargs apt-get -y purge
