@@ -54,3 +54,10 @@ nginx_basic_auth_user_file: /etc/nginx/.htpasswd
 # Must match letsencrypt_dhparams_path
 #
 nginx_ssl_dhparams_path: /etc/nginx/dhparams.pem
+
+#
+# Caching options
+#
+nginx_caching_enabled: false
+nginx_cache_extensions: js|css
+nginx_cache_expires: max
