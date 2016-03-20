@@ -17,6 +17,8 @@ server {
     index index.php index.html;
 
     client_max_body_size {{ nginx_client_max_body_size }};
+    
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript text/x-js;
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
