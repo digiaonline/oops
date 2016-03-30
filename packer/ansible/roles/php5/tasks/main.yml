@@ -50,6 +50,7 @@
   when: php_sapi_apache_installed.stat.exists == True
   notify: restart apache2
 
+# composer
 - name: Install Composer
   shell: curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
 
@@ -60,3 +61,15 @@
 - name: Configure Github OAuth token
   template: src=php_composer_auth.json.j2 dest={{ php_composer_config_path }}/auth.json
   when: php_composer_auth_token is defined
+
+- name: Check who owns the directory where .config/composer is located
+  stat: path={{ php_composer_config_path | dirname | dirname }}
+  register: php_composer_home
+  
+- name: Ensure proper permissions on .config/
+  file: path={{ php_composer_config_path | dirname }} 
+        state=directory 
+        owner={{ php_composer_home.stat.pw_name }} 
+        group={{ php_composer_home.stat.pw_name }}
+        recurse=yes
+  
