@@ -16,7 +16,7 @@
 - name: "Create weekly database backup job"
   cron: name="weekly database backup"
         user={{ mariadb_backup_username }}
-        minute="0"
+        minute="30"
         hour="6"
         weekday="0"
         job="mysqldump -h {{ mariadb_backup_database_hostname }} {{ mariadb_backup_mysqldump_options }} {{ item }} | gzip > {{ mariadb_backup_path }}/{{ item }}_weekly_`date +\%Y-\%m-\%d_\%H\%M\%S`.sql.gz"
