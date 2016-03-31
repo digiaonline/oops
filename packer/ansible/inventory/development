@@ -1,2 +1,4 @@
-[servers]
-vagrant
+nginx-php-mariadb-nodejs hostname=nginx-php-mariadb-nodejs
+
+[vagrant]
+nginx-php-mariadb-nodejs

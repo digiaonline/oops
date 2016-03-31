@@ -3,7 +3,6 @@
   connection: local
   become: true
   vars:
-    hostname: nginx-php-mariadb-nodejs
     nginx_host_template: default-php.j2
     php_pear_packages:
       - PHP_CodeSniffer
