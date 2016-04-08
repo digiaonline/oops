@@ -38,6 +38,21 @@ so this step is important.
 Atlas, or run `packer push nginx-php-mariadb-nodejs.json` to build the box in Atlas instead. You'll probably want to do 
 the latter.
 
+### Vagrant
+
+Once you have successfully built a Vagrant box you can create an initial Vagrantfile using `vagrant init foo/bar`, 
+where `foo/bar` is the name of your organization and box. To reprovision the box, add this snippet somewhere in your 
+Vagrantfile:
+
+```ruby
+config.vm.provision "shell", inline: <<-SHELL
+  /path/to/oops/scripts/provision.sh development
+SHELL
+```
+
+Then, open `provision.sh` and adjust the variables at the top of the file to match your environment. You can now 
+reprovision the box at any time by running `vagrant provision` from your host.
+
 ## The provisioning process
 
 When a box is created and provisioned Packer starts with a standard Linux distribution image. It then uses shell 
