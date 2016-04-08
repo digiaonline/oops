@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # Change these to match the project's Ansible configuration
-PLAYBOOK="nginx-php-mariadb-nodejs.yml"
+PLAYBOOK_DIR="/vagrant/ops/packer/ansible"
+PLAYBOOK="playbook.yml"
 INVENTORY="inventory/development"
 LIMIT="nginx-php-mariadb-nodejs"
 
@@ -15,7 +16,7 @@ ENVIRONMENT=$1
 
 if [ "$ENVIRONMENT" == "development" ]
 then
-	cd /vagrant/ops/packer/ansible
+	cd $PLAYBOOK_DIR
 	ansible-playbook -i $INVENTORY --limit $LIMIT $PLAYBOOK
 else
 	cd /vagrant
