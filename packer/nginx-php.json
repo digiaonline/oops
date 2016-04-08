@@ -91,10 +91,10 @@
     },
     {
       "type": "ansible-local",
-      "playbook_file": "ansible/nginx-php.yml",
+      "playbook_file": "ansible/playbook.yml",
       "playbook_dir":  "ansible",
       "inventory_file": "ansible/inventory/development",
-      "extra_arguments": ["-i", "inventory/development", "--limit", "vagrant", "-v"]
+      "extra_arguments": ["-i", "inventory/development", "--limit", "nginx-php", "-v"]
     },
     {
       "type": "shell",

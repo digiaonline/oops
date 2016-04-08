@@ -1,0 +1,34 @@
+# common
+- hosts: all
+  connection: local
+  become: true
+  roles:
+    - init
+    
+# nginx
+- hosts: php
+  connection: local
+  become: true
+  roles:
+    - nginx
+
+# php
+- hosts: php
+  connection: local
+  become: true
+  roles:
+    - php5
+
+# database
+- hosts: database
+  connection: local
+  become: true
+  roles:
+    - mariadb
+    
+# nodejs
+- hosts: nodejs
+  connection: local
+  become: true
+  roles:
+    - nodejs

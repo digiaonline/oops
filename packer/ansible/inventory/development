@@ -1,4 +1,16 @@
 nginx-php-mariadb-nodejs hostname=nginx-php-mariadb-nodejs
+nginx-php hostname=nginx-php
 
-[vagrant]
+[nginx]
+nginx-php-mariadb-nodejs
+nginx-php
+
+[php]
+nginx-php-mariadb-nodejs
+nginx-php
+
+[database]
+nginx-php-mariadb-nodejs
+
+[nodejs]
 nginx-php-mariadb-nodejs
